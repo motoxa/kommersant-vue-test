@@ -2,7 +2,7 @@
   <div id="app">
     <TheHeader caption="Посты пользователей" :username="currentUserName"/>
     <TheSidebar :users="users" :current-user-id="currentUserId" @set-user="setUser"/>
-    <TheContent/>
+    <TheContent :user="currentUser" :posts="userPosts"/>
   </div>
 </template>
 
@@ -19,18 +19,31 @@ export default {
     TheContent,
   },
   computed: {
+    currentUser() {
+      return this.getCurrentUser();
+    },
     currentUserName() {
-      if (this.currentUserId > 0) {
-        const currentUser = this.users.find((user) => user.id === this.currentUserId);
-        if (currentUser) {
-          return currentUser.username;
-        }
-        return '';
+      const currentUser = this.getCurrentUser();
+      if (currentUser) {
+        return currentUser.username;
       }
       return '';
     },
+    userPosts() {
+      return this.posts.filter((post) => post.userId === this.currentUserId);
+    },
   },
   methods: {
+    getCurrentUser() {
+      if (this.currentUserId > 0) {
+        const currentUser = this.users.find((user) => user.id === this.currentUserId);
+        if (currentUser) {
+          return currentUser;
+        }
+        return null;
+      }
+      return null;
+    },
     setUser(id) {
       this.currentUserId = id || 0;
     },

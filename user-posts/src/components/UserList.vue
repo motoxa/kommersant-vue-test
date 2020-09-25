@@ -1,8 +1,8 @@
 <template>
   <ul class="list">
     <li
-      v-for="user in users"
-      :key="user.id"
+      v-for="(user, index) in users"
+      :key="index"
       class="item"
     >
       <strong v-if="user.id === currentUserId">{{ user.name }}</strong>
@@ -29,5 +29,6 @@ export default {
 }
 
 .item {
+  margin: 0 0 5px;
 }
 </style>

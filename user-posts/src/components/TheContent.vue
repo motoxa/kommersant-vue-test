@@ -1,7 +1,12 @@
 <template>
-  <div class="content">
-    <h2 class="caption">Посты пользователя <strong>username</strong></h2>
-    <UserPosts/>
+  <div class="content" v-if="user">
+    <h2 class="caption">
+      Посты пользователя <strong>{{ user.username }}</strong> ({{ user.name }})
+    </h2>
+    <UserPosts :posts="posts" :key="user.id"/>
+  </div>
+  <div class="content" v-else>
+    <h2 class="caption">Выберите пользователя, чтобы увидеть его посты</h2>
   </div>
 </template>
 
@@ -10,6 +15,10 @@ import UserPosts from './UserPosts.vue';
 
 export default {
   name: 'TheContent',
+  props: {
+    user: Object,
+    posts: Array,
+  },
   components: {
     UserPosts,
   },
@@ -26,7 +35,7 @@ export default {
 }
 
 .caption {
-  margin: 0 0 10px;
+  margin: 0 0 20px;
   font: 18px/1.2 sans-serif;
   color: #666;
 }

@@ -1,11 +1,12 @@
 <template>
   <ul class="list">
     <li
-      v-for="user in [{id: 1, name: 'Name 1'}, {id: 2, name: 'Name 2'}]"
+      v-for="user in users"
       :key="user.id"
       class="item"
     >
-      <a href="#" @click.prevent="">{{ user.name }}</a>
+      <strong v-if="user.id === currentUserId">{{ user.name }}</strong>
+      <a href="#" v-else @click.prevent="$emit('set-user', user.id)">{{ user.name }}</a>
     </li>
   </ul>
 </template>
@@ -13,6 +14,10 @@
 <script>
 export default {
   name: 'UserList',
+  props: {
+    users: Array,
+    currentUserId: Number,
+  },
 };
 </script>
 

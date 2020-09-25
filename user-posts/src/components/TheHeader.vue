@@ -4,7 +4,7 @@
     <div class="content">
       <h1 class="caption">{{ caption }}</h1>
       <p class="user">
-        <span v-if="1">Пользователь: <strong>{{ 'username' }}</strong></span>
+        <span v-if="username">Пользователь: <strong>{{ username }}</strong></span>
         <span v-else>Выберите пользователя</span>
       </p>
     </div>
@@ -16,6 +16,7 @@ export default {
   name: 'TheHeader',
   props: {
     caption: String,
+    username: String,
   },
 };
 </script>

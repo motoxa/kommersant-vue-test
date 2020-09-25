@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <TheHeader caption="Посты пользователей"/>
-    <TheSidebar/>
+    <TheHeader caption="Посты пользователей" :username="currentUserName"/>
+    <TheSidebar :users="users" :current-user-id="currentUserId" @set-user="setUser"/>
     <TheContent/>
   </div>
 </template>
@@ -18,8 +18,42 @@ export default {
     TheSidebar,
     TheContent,
   },
+  computed: {
+    currentUserName() {
+      if (this.currentUserId > 0) {
+        const currentUser = this.users.find((user) => user.id === this.currentUserId);
+        if (currentUser) {
+          return currentUser.username;
+        }
+        return '';
+      }
+      return '';
+    },
+  },
+  methods: {
+    setUser(id) {
+      this.currentUserId = id || 0;
+    },
+  },
+  data() {
+    return {
+      users: [],
+      posts: [],
+      currentUserId: 0,
+    };
+  },
   created() {
-    console.log('created', this);
+    const vm = this;
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((data) => {
+        vm.users = data;
+      });
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((data) => {
+        vm.posts = data;
+      });
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <h2 class="caption">Пользователи</h2>
-    <UserList/>
+    <UserList :users="users" :current-user-id="currentUserId" @set-user="setUser"/>
   </div>
 </template>
 
@@ -10,6 +10,15 @@ import UserList from './UserList.vue';
 
 export default {
   name: 'TheSidebar',
+  props: {
+    users: Array,
+    currentUserId: Number,
+  },
+  methods: {
+    setUser(id) {
+      this.$emit('set-user', id);
+    },
+  },
   components: {
     UserList,
   },

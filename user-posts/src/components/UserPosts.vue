@@ -32,6 +32,16 @@ export default {
   props: {
     posts: Array,
   },
+  watch: {
+    posts() {
+      if (
+        this.currentPostId > 0
+        && this.posts.findIndex((post) => post.id === this.currentPostId) < 0
+      ) {
+        this.currentPostId = 0;
+      }
+    },
+  },
   data() {
     return {
       currentPostId: 0,

@@ -6,10 +6,7 @@
     <h2 class="caption">
       Посты пользователя <strong>{{ user.username }}</strong> ({{ user.name }})
     </h2>
-    <UserPosts
-      :posts="posts"
-      :key="user.id"
-    />
+    <UserPosts :posts="posts"/>
   </div>
   <div class="content" v-else>
     <h2 class="caption">Выберите пользователя, чтобы увидеть его посты</h2>

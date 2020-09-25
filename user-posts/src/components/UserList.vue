@@ -5,8 +5,16 @@
       :key="index"
       class="item"
     >
-      <strong v-if="user.id === currentUserId">{{ user.name }}</strong>
-      <a href="#" v-else @click.prevent="$emit('set-user', user.id)">{{ user.name }}</a>
+      <strong v-if="user.id === currentUserId">
+        {{ user.name }}
+      </strong>
+      <a
+        href="#"
+        v-else
+        @click.prevent="$emit('set-user', user.id)"
+      >
+        {{ user.name }}
+      </a>
     </li>
   </ul>
 </template>

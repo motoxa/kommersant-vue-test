@@ -1,6 +1,10 @@
 <template>
   <div class="header">
-    <img alt="Vue logo" src="../assets/logo.png" class="logo">
+    <img
+      alt="Vue logo"
+      src="../assets/logo.png"
+      class="logo"
+    >
     <div class="content">
       <h1 class="caption">{{ caption }}</h1>
       <p class="user">

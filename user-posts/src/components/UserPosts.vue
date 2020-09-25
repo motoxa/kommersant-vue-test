@@ -12,9 +12,7 @@
         <h2 class="title">
           {{ post.title }}
         </h2>
-        <pre class="body">
-          {{ post.body }}
-        </pre>
+        <pre class="body">{{ post.body }}</pre>
       </div>
       <a
         href="#"

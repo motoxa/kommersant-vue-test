@@ -30,21 +30,6 @@ export default {
   },
   computed: {
     currentUser() {
-      return this.getCurrentUser();
-    },
-    currentUserName() {
-      const currentUser = this.getCurrentUser();
-      if (currentUser) {
-        return currentUser.username;
-      }
-      return '';
-    },
-    userPosts() {
-      return this.posts.filter((post) => post.userId === this.currentUserId);
-    },
-  },
-  methods: {
-    getCurrentUser() {
       if (this.currentUserId > 0) {
         const currentUser = this.users.find((user) => user.id === this.currentUserId);
         if (currentUser) {
@@ -54,6 +39,17 @@ export default {
       }
       return null;
     },
+    currentUserName() {
+      if (this.currentUser) {
+        return this.currentUser.username;
+      }
+      return '';
+    },
+    userPosts() {
+      return this.posts.filter((post) => post.userId === this.currentUserId);
+    },
+  },
+  methods: {
     setUser(id) {
       this.currentUserId = id || 0;
     },

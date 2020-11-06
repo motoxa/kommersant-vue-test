@@ -1,0 +1,89 @@
+<template>
+  <div id="app">
+    <!-- <TheHeader
+      caption="Посты пользователей"
+      :username="currentUserName"
+    />
+    <TheSidebar
+      :users="users"
+      :current-user-id="currentUserId"
+      @set-user="setUser"
+    />
+    <TheContent
+      :user="currentUser"
+      :posts="userPosts"
+    /> -->
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+// import TheHeader from './components/TheHeader.vue';
+// import TheSidebar from './components/TheSidebar.vue';
+// import TheContent from './components/TheContent.vue';
+
+@Component({
+  components: {
+    // TheHeader,
+    // TheSidebar,
+    // TheContent,
+  },
+  computed: {
+    currentUser() {
+      if (this.currentUserId > 0) {
+        const currentUser = this.users.find((user) => user.id === this.currentUserId);
+        if (currentUser) {
+          return currentUser;
+        }
+        return null;
+      }
+      return null;
+    },
+    currentUserName() {
+      if (this.currentUser) {
+        return this.currentUser.username;
+      }
+      return '';
+    },
+    userPosts() {
+      return this.posts.filter((post) => post.userId === this.currentUserId);
+    },
+  },
+  methods: {
+    setUser(id) {
+      this.currentUserId = id || 0;
+    },
+  },
+  data() {
+    return {
+      users: [],
+      posts: [],
+      currentUserId: 0,
+    };
+  },
+  created() {
+    const vm = this;
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((data) => {
+        vm.users = data;
+      });
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((data) => {
+        vm.posts = data;
+      });
+  },
+})
+export default class App extends Vue {}
+</script>
+
+<style>
+body {
+  margin: 0;
+}
+#app {
+  font: 14px/1.2 sans-serif;
+  color: #333;
+}
+</style>

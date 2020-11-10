@@ -18,25 +18,5 @@
     </li>
   </ul>
 </template>
-
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-
-@Component
-export default class UserList extends Vue {
-  @Prop() private users!: array;
-  @Prop() private currentUserId!: number;
-}
-</script>
-
-<style scoped>
-.list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.item {
-  margin: 0 0 5px;
-}
-</style>
+<script src="./UserList.ts" lang="ts"></script>
+<style src="./UserList.scss" lang="scss" scoped></style>

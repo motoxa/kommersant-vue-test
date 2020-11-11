@@ -12,6 +12,10 @@ export default class UserPosts extends Vue {
 
   private currentPostId = 0;
 
+  private setPost(id: number): void {
+    this.currentPostId = id;
+  };
+
   @Watch('posts')
   onPropertyChanged() {
     if (

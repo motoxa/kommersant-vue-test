@@ -40,7 +40,7 @@ export default class App extends Vue {
   }
 
   private setUser(id: number): void {
-    this.currentUserId = id || 0;
+    this.currentUserId = id;
   }
 
   private created(): void {

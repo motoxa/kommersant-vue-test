@@ -18,7 +18,7 @@
         href="#"
         class="title"
         v-else
-        @click.prevent="currentPostId = post.id"
+        @click.prevent="setPost(post.id)"
       >
         {{ post.title }}
       </a>

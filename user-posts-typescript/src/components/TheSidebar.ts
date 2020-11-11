@@ -1,4 +1,9 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Prop,
+  Emit,
+  Vue,
+} from 'vue-property-decorator';
 import { IUser } from '../interfaces/IUser';
 import UserList from './UserList.vue';
 
@@ -12,7 +17,5 @@ export default class TheSidebar extends Vue {
 
   @Prop() private currentUserId!: number;
 
-  private setUser(id: number): void {
-    this.$emit('set-user', id);
-  }
+  @Emit() private setUser(id: number): void {}
 }

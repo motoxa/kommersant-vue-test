@@ -11,7 +11,7 @@
       <a
         href="#"
         v-else
-        @click.prevent="$emit('set-user', user.id)"
+        @click.prevent="setUser(user.id)"
       >
         {{ user.name }}
       </a>

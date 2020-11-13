@@ -11,5 +11,7 @@ import UserPosts from '@/components/UserPosts.vue';
 export default class Posts extends Vue {
   @Prop() private user!: IUser;
 
+  @Prop() private testVaiable!: string;
+
   @Prop() private posts!: IPost[];
 }

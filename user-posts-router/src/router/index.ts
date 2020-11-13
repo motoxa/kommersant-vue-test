@@ -13,6 +13,7 @@ const routes: Array<RouteConfig> = [
     path: '/posts',
     name: 'Posts',
     component: () => import('@/views/Posts.vue'),
+    props: true,
   },
 ];
 

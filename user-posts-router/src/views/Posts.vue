@@ -10,6 +10,7 @@
   </div>
   <div class="content" v-else>
     <h2 class="caption">Выберите пользователя, чтобы увидеть его посты</h2>
+    <h1>{{testVaiable}}</h1>
     <router-link :to="{name: 'Main'}">This is the link to Main</router-link>
   </div>
 </template>

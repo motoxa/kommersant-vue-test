@@ -10,6 +10,7 @@
   </div>
   <div class="content" v-else>
     <h2 class="caption">Выберите пользователя, чтобы увидеть его посты</h2>
+    <router-link :to="{name: 'Main'}">This is the link to Main</router-link>
   </div>
 </template>
 <script src="./Posts.ts" lang="ts"></script>

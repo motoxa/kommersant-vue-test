@@ -1,7 +1,10 @@
 <template>
-  <ul class="list">
+  <ul
+    v-if="userPosts && userPosts.length"
+    class="list"
+  >
     <li
-      v-for="(post, index) in posts"
+      v-for="(post, index) in userPosts"
       :key="index"
       class="item"
     >
@@ -14,16 +17,23 @@
         </h2>
         <pre class="body">{{ post.body }}</pre>
       </div>
-      <a
-        href="#"
-        class="title"
+      <router-link
         v-else
-        @click.prevent="setPost(post.id)"
+        :to="`/users/${currentUser.username}/posts/${post.id}`"
+        class="title"
       >
         {{ post.title }}
-      </a>
+      </router-link>
     </li>
   </ul>
+  <div v-else>
+    <div v-if="currentUser">
+      У пользователя нет постов
+    </div>
+    <div v-else>
+      Пользователь не найден
+    </div>
+  </div>
 </template>
 <script src="./UserPosts.ts" lang="ts"></script>
 <style src="./UserPosts.scss" lang="scss" scoped></style>

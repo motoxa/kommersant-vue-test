@@ -1,15 +1,19 @@
 <template>
-  <div
-    class="content"
-    v-if="user"
-  >
-    <h2 class="caption">
-      Посты пользователя <strong>{{ user.username }}</strong> ({{ user.name }})
+  <div class="content">
+    <div class="breadcrumbs">
+      <router-link to="/">
+        Назад к списку пользователей
+      </router-link>
+    </div>
+    <h2
+      v-if="currentUser"
+      class="caption"
+    >
+      Посты пользователя <strong>{{ currentUser.username }}</strong> ({{ currentUser.name }})
     </h2>
-    <UserPosts :posts="posts"/>
-  </div>
-  <div class="content" v-else>
-    <h2 class="caption">Выберите пользователя, чтобы увидеть его посты</h2>
+    <UserPosts
+      :current-user="currentUser"
+    />
   </div>
 </template>
 <script src="./Posts.ts" lang="ts"></script>

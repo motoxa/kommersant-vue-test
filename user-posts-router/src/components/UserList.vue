@@ -5,13 +5,7 @@
       :key="index"
       class="item"
     >
-      <strong v-if="user.id === currentUserId">
-        {{ user.name }}
-      </strong>
-      <router-link
-        v-else
-        to="{ path: 'posts', params: { id: user.id }}"
-      >
+      <router-link :to="`/users/${user.username}/posts`">
         {{ user.name }}
       </router-link>
     </li>

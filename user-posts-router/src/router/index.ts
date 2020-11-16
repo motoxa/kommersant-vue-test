@@ -5,14 +5,23 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
+    path: '/users',
+    alias: '/',
     name: 'Main',
     component: () => import('@/views/Main.vue'),
   },
   {
-    path: '/posts',
+    path: '/users/:username/posts/:postId?',
+    alias: [
+      '/users/:username',
+    ],
     name: 'Posts',
     component: () => import('@/views/Posts.vue'),
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    component: () => import('@/views/NotFound.vue'),
   },
 ];
 

@@ -3,8 +3,7 @@
     <h2 class="caption">Пользователи</h2>
     <UserList
       :users="users"
-      :current-user-id="currentUserId"
-      @set-user="setUser"
+      :current-user="currentUser"
     />
   </div>
 </template>

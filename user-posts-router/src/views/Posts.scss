@@ -6,6 +6,14 @@
   padding: 30px;
 }
 
+.breadcrumbs {
+  margin-bottom: 20px;
+}
+
+.breadcrumbs:before {
+  content: "< ";
+}
+
 .caption {
   margin: 0 0 20px;
   font: 18px/1.2 sans-serif;
